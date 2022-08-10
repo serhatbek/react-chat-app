@@ -1,11 +1,20 @@
 import { useChat } from '../context/ChatContext';
+import styles from './styles.module.css';
+
+import ChatItem from './ChatItem';
 
 const ChatList = () => {
-  const data = useChat();
+  const { messages } = useChat();
 
-  console.log(data);
-
-  return <div>ChatList</div>;
+  return (
+    <div className={styles.chatlist}>
+      <div>
+        {messages.map((item, key) => (
+          <ChatItem item={item} key={key} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default ChatList;
